@@ -35,12 +35,15 @@ fs.readFile(inputFilePath, 'utf8', (err, data) => {
     return cleanedItem;
   });
 
-  // Write the cleaned JSON data to a new file
-  fs.writeFile(outputFilePath, JSON.stringify(cleanedData, null, 2), 'utf8', writeErr => {
+  // Minify the JSON data
+  const minifiedData = JSON.stringify(cleanedData);
+
+  // Write the cleaned and minified JSON data to a new file
+  fs.writeFile(outputFilePath, minifiedData, 'utf8', writeErr => {
     if (writeErr) {
       console.error('Error writing the file:', writeErr);
       return;
     }
-    console.log('Cleaned JSON data has been written to', outputFilePath);
+    console.log('Cleaned and minified JSON data has been written to', outputFilePath);
   });
 });
