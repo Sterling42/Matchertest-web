@@ -1,14 +1,53 @@
 /* styles/Profile.module.css */
 .Profile {
-  text-align: center;
-  padding: 20px;
-}
-
-.ProfileHeader {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-.ProfileDetails {
-  font-size: 1.2em;
-}
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .ProfileHeader {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .ProfilePicture {
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .LevelXPBar {
+    margin: 20px 0;
+  }
+  
+  .Level {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .XPBar {
+    width: 80%;
+    height: 20px;
+    background-color: #ddd;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .XPBarFill {
+    height: 100%;
+    background-color: #4caf50;
+    width: 50%; /* Example width, this should be dynamic */
+  }
+  
+  .TokenList {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .TokenListItem {
+    margin: 10px 0;
+  }

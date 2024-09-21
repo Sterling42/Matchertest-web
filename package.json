@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@solana/spl-token": "^0.4.8",
+    "@solana/spl-token-registry": "^0.2.4574",
     "@solana/wallet-adapter-backpack": "^0.1.13",
     "@solana/wallet-adapter-base": "^0.9.22",
     "@solana/wallet-adapter-phantom": "^0.9.22",
@@ -18,6 +20,7 @@
     "@solana/web3.js": "^1.37.0",
     "@use-gesture/react": "^10.3.1",
     "next": "12.1.2",
+    "papaparse": "^5.4.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-draggable": "^4.4.6",
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@types/node": "^17.0.23",
     "@types/react": "^18.0.1",
+    "csv-loader": "^3.0.5",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.2",
     "typescript": "^4.6.3"

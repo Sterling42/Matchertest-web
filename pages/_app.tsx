@@ -6,7 +6,6 @@ import {
   GlowWalletAdapter,
   PhantomWalletAdapter
 } from "@solana/wallet-adapter-wallets";
-import { clusterApiUrl } from "@solana/web3.js";
 import { BackpackWalletAdapter } from "@solana/wallet-adapter-backpack";
 
 require("@solana/wallet-adapter-react-ui/styles.css");
@@ -14,11 +13,8 @@ require("../styles/globals.css");
 require("../styles/Home.module.css");
 
 const WalletContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
-  const network = WalletAdapterNetwork.Devnet;
-
-  // You can provide a custom RPC endpoint here
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  // Use the provided RPC endpoint directly
+  const endpoint = 'https://mainnet.helius-rpc.com/?api-key=87f73015-922d-4549-8eea-3253f7635385';
 
   // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
   // Only the wallets you configure here will be compiled into your application, and only the dependencies
@@ -29,7 +25,7 @@ const WalletContextProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       new GlowWalletAdapter(),
       new BackpackWalletAdapter()
     ],
-    [network]
+    []
   );
 
   return (

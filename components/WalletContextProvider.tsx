@@ -1,4 +1,3 @@
-// components/WalletContextProvider.tsx
 import { FC, ReactNode } from 'react';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
@@ -11,7 +10,8 @@ import {
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const endpoint = clusterApiUrl('devnet');
+  // Use the provided RPC endpoint directly
+  const endpoint = 'https://mainnet.helius-rpc.com/?api-key=87f73015-922d-4549-8eea-3253f7635385';
   const wallets = [
     new PhantomWalletAdapter(),
     new GlowWalletAdapter(),
