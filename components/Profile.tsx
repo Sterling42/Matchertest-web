@@ -3,7 +3,23 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { PublicKey, GetProgramAccountsFilter, ParsedAccountData } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import styles from '../styles/Profile.module.css';
-import mintData from './mint.json'; // Import the mint.json file
+import tokenData from './tokens.json'; // Import the tokens.json file
+
+interface TokenData {
+  address: string;
+  created_at: string;
+  daily_volume: number | null;
+  decimals: number;
+  extensions: Record<string, any>;
+  freeze_authority: string | null;
+  logoURI: string;
+  mint_authority: string | null;
+  minted_at: string | null;
+  name: string;
+  permanent_delegate: string | null;
+  symbol: string;
+  tags: string[];
+}
 
 interface TokenInfo {
   name: string;
@@ -17,20 +33,20 @@ interface TokenInfo {
 const Profile: React.FC = () => {
   const { publicKey } = useWallet();
   const { connection } = useConnection();
-  const [tokens, setTokens] = useState<string[]>([]);
+  const [tokens, setTokens] = useState<{ balance: number, info: TokenInfo }[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [tokenMap, setTokenMap] = useState<Record<string, TokenInfo>>({});
 
   useEffect(() => {
     // Create a token map from the JSON file
-    const tokenMap = mintData.reduce((map: Record<string, TokenInfo>, item: any) => {
-      map[item['Mint']] = {
-        name: item['Name'],
-        symbol: item['Symbol'],
-        mintAddress: item['Mint'],
-        decimals: item['Decimals'],
-        logoUrl: item['LogoURI'],
-        verified: item['Community Validated'],
+    const tokenMap = (tokenData as TokenData[]).reduce((map: Record<string, TokenInfo>, item: TokenData) => {
+      map[item.address] = {
+        name: item.name,
+        symbol: item.symbol,
+        mintAddress: item.address,
+        decimals: item.decimals,
+        logoUrl: item.logoURI,
+        verified: item.tags && item.tags.includes('verified'),
       };
       return map;
     }, {});
@@ -86,19 +102,18 @@ const Profile: React.FC = () => {
             if (accountInfo) {
               const mintAddress = mintAddresses[index];
               const tokenInfo = tokenMap[mintAddress];
-              const tokenTicker = tokenInfo ? tokenInfo.symbol : mintAddress;
               const accountData = tokenAccounts[index].account.data;
               let tokenBalance = 0;
               if ('parsed' in accountData) {
                 tokenBalance = accountData.parsed.info.tokenAmount.uiAmount;
               }
-              if (tokenBalance > 0) {
-                console.log(`Token found: ${tokenBalance} ${tokenTicker}`); // Debugging statement
-                return `${tokenBalance} ${tokenTicker}`;
+              if (tokenBalance > 0 && tokenInfo) {
+                console.log(`Token found: ${tokenBalance} ${tokenInfo.symbol}`); // Debugging statement
+                return { balance: tokenBalance, info: tokenInfo };
               }
             }
             return null;
-          }).filter(token => token !== null) as string[];
+          }).filter(token => token !== null) as { balance: number, info: TokenInfo }[];
 
           console.log('Fetched tokens:', fetchedTokens);
 
@@ -120,29 +135,46 @@ const Profile: React.FC = () => {
   return (
     <div className={styles.Profile}>
       <div className={styles.ProfileHeader}>Profile Page</div>
-      <div
-        className={styles.ProfilePicture}
-        style={{ backgroundImage: 'url(/path/to/profile-picture.jpg)' }}
-      ></div>
-      <div className={styles.LevelXPBar}>
-        <div className={styles.Level}>Level: 10</div>
-        <div className={styles.XPBar}>
-          <div className={styles.XPBarFill} style={{ width: '70%' }}></div>
-        </div>
-      </div>
-      <div className={styles.TokenList}>
-        <h3>Tokens:</h3>
-        {loading ? (
-          <div>Loading tokens...</div>
-        ) : tokens.length > 0 ? (
-          tokens.map((token, index) => (
-            <div key={index} className={styles.TokenListItem}>
-              {token}
+      <div className={styles.ProfileContainer}>
+        <div className={styles.ProfileInfo}>
+          <div
+            className={styles.ProfilePicture}
+            style={{ backgroundImage: 'url(/path/to/profile-picture.jpg)' }}
+          ></div>
+          <div className={styles.LevelXPBar}>
+            <div className={styles.Level}>Level: 10</div>
+            <div className={styles.XPBar}>
+              <div className={styles.XPBarFill} style={{ width: '70%' }}></div>
             </div>
-          ))
-        ) : (
-          <div>No tokens found</div>
-        )}
+          </div>
+        </div>
+        <div className={styles.TokenList}>
+          <h3>Tokens:</h3>
+          {loading ? (
+            <div>Loading tokens...</div>
+          ) : tokens.length > 0 ? (
+            <div className={styles.TokenGrid}>
+              {tokens.map((token, index) => (
+                <div key={index} className={styles.TokenListItem}>
+                  {token.info.logoUrl ? (
+                    <img
+                      src={token.info.logoUrl}
+                      alt={token.info.symbol}
+                      className={styles.TokenImage}
+                      title={`${token.balance} ${token.info.symbol}`}
+                    />
+                  ) : (
+                    <div className={styles.EmptyTokenImage} title={`${token.balance} ${token.info.symbol}`}>
+                      ?
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>No tokens found</div>
+          )}
+        </div>
       </div>
     </div>
   );
