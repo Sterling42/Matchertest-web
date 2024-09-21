@@ -1,0 +1,22 @@
+/* styles/Footer.module.css */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1e1e1e;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: #ffffff;
+  }
+  
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }

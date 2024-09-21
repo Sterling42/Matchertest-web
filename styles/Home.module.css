@@ -1,25 +1,10 @@
+/* styles/Home.module.css */
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
   text-align: left;
-  background-color: #028174;
-}
-
-.AppHeader {
-  height: 90px;
-  display: flex;
-  background-color: #26648E;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 50px;
-  color: white;
-  padding-left: 20px;
-  padding-right: 20px;
-  flex-wrap: wrap;
-  font-family: 'Poppins', sans-serif;
+  background-color: #252529;
 }
 
 .AppBody {
@@ -51,6 +36,7 @@
   border: 0;
   font-family: "Roboto", sans-serif;
 }
+
 .formButton {
   margin: 10px 0 10px 0;
   padding: 15px;
