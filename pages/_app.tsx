@@ -11,9 +11,9 @@ import { BackpackWalletAdapter } from "@solana/wallet-adapter-backpack";
 
 require("@solana/wallet-adapter-react-ui/styles.css");
 require("../styles/globals.css");
-require ("../styles/Home.module.css");
+require("../styles/Home.module.css");
 
-const App = ({ Component, pageProps }) => {
+const WalletContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
   const network = WalletAdapterNetwork.Devnet;
 
@@ -36,10 +36,18 @@ const App = ({ Component, pageProps }) => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <Component {...pageProps} />
+          {children}
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
+  );
+};
+
+const App = ({ Component, pageProps }) => {
+  return (
+    <WalletContextProvider>
+      <Component {...pageProps} />
+    </WalletContextProvider>
   );
 };
 

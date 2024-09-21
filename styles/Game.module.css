@@ -1,0 +1,46 @@
+/* styles/Game.module.css */
+.gameFrame {
+    width: 500px;
+    height: 650px;
+    position: relative;
+    margin: auto;
+}
+
+.card:nth-child(2) {
+    top: 10px;
+    left: 10px;
+}
+
+.card:nth-child(3) {
+    top: 20px;
+    left: 20px;
+}
+
+.draggableSquare {
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    background: linear-gradient(135deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%, #e0e0e0);
+    background-size: 50px 50px;
+    border: 2px solid #000;
+    border-radius: 10px; /* Rounded corners */
+    position: absolute;
+    top: 30px; /* Adjust position to follow the pattern */
+    left: 30px; /* Adjust position to follow the pattern */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect */
+}
+
+.card {
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    background: linear-gradient(135deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%, #e0e0e0);
+    background-size: 50px 50px;
+    border: 2px solid #000;
+    border-radius: 10px; /* Rounded corners */
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect */
+    overflow: hidden; /* Ensure content doesn't overflow */
+}

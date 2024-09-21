@@ -1,12 +1,11 @@
 /* styles/Home.module.css */
 .App {
+  text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  text-align: left;
-  background-color: #252529;
+  background: linear-gradient(to right, #b22222, #252529, #006400);
 }
-
 .AppBody {
   height: 100%;
   display: flex;
@@ -24,6 +23,7 @@
   align-items: center;
 }
 
+/* styles/Home.module.css */
 .input {
   background: #f2f2f2;
 }
@@ -43,4 +43,13 @@
   font-size: 16px;
   border: 0;
   font-family: "Roboto", sans-serif;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding-bottom: 80px;
+  padding-top: 10px; /* Add bottom padding to avoid overlap with footer */
 }

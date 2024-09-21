@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styles from '../styles/AppHeader.module.css';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const AppBar: FC = () => {
     return (
@@ -10,10 +11,18 @@ export const AppBar: FC = () => {
                 <Image src="/solanaLogo.png" height={50} width={50} />
                 <span className={styles.Title}>Matcher on Solana</span>
             </div>
+            <div className={styles.MiddleSection}>
+                <Link href="/">
+                    <button className={styles.NavButton}>🔥 Matcher</button>
+                </Link>
+                <button className={styles.NavButton}>📊 Stats</button>
+                <button className={styles.NavButton}>📖 Docs</button>
+                <button className={styles.NavButton}>❓ Faq</button>
+            </div>
             <div className={styles.RightSection}>
-                <button className={styles.NavButton}>Matcher</button>
-                <button className={styles.NavButton}>Profile</button>
-                <button className={styles.NavButton}>Docs</button>
+                <Link href="/profile">
+                    <button className={styles.NavButton}>Profile</button>
+                </Link>
                 <WalletMultiButton className={styles.WalletButton} />
             </div>
         </div>

@@ -11,27 +11,34 @@
     padding: 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
-  }
-  
-  .LeftSection {
+}
+
+.LeftSection {
     display: flex;
     align-items: center;
-  }
-  
-  .Title {
+}
+
+.MiddleSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.Title {
     margin-left: 15px;
     font-size: 20px;
     font-weight: 500;
     color: #ffffff;
-  }
-  
-  .RightSection {
+}
+
+.RightSection {
     display: flex;
     align-items: center;
-  }
-  
-  .NavButton {
-    margin-right: 15px;
+}
+
+.NavButton {
+    margin: 0 15px;
     padding: 8px 16px;
     background-color: #3a3a3a;
     border: none;
@@ -40,21 +47,21 @@
     font-size: 16px;
     color: #ffffff;
     transition: background-color 0.3s ease;
-  }
-  
-  .NavButton:hover {
+}
+
+.NavButton:hover {
     background-color: #575757;
-  }
-  
-  .WalletButton {
+}
+
+.WalletButton {
     background-color: #3a3a3a !important;
     color: #ffffff !important;
     border-radius: 4px !important;
     padding: 8px 16px !important;
     font-size: 16px !important;
     transition: background-color 0.3s ease !important;
-  }
-  
-  .WalletButton:hover {
+}
+
+.WalletButton:hover {
     background-color: #575757 !important;
-  }
+}

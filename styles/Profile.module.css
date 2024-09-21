@@ -1,0 +1,14 @@
+/* styles/Profile.module.css */
+.Profile {
+  text-align: center;
+  padding: 20px;
+}
+
+.ProfileHeader {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.ProfileDetails {
+  font-size: 1.2em;
+}
