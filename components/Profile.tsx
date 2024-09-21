@@ -12,7 +12,6 @@ const createTokenMap = (data: TokenData[]): Record<string, TokenInfo> => {
       name: item.name,
       symbol: item.symbol,
       mintAddress: item.address,
-      decimals: item.decimals,
       logoUrl: item.logoURI,
       verified: false, // Assuming verification is not needed
     };

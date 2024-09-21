@@ -1,12 +1,12 @@
 const fs = require('fs');
 
 // Path to the input JSON file
-const inputFilePath = '../components/tokens.json';
+const inputFilePath = '../components/tokens1.json';
 // Path to the output JSON file
-const outputFilePath = '../components/tokens1.json';
+const outputFilePath = '../components/tokens11.json';
 
-// Fields to keep
-const fieldsToKeep = ['address', 'decimals', 'logoURI', 'name', 'symbol'];
+// Fields to keep (excluding 'decimals')
+const fieldsToKeep = ['address', 'logoURI', 'name', 'symbol'];
 
 // Read the JSON file
 fs.readFile(inputFilePath, 'utf8', (err, data) => {
