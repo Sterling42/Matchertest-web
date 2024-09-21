@@ -6,7 +6,7 @@ const inputFilePath = '../components/tokens1.json';
 const outputFilePath = '../components/tokens11.json';
 
 // Fields to keep (excluding 'decimals')
-const fieldsToKeep = ['address', 'logoURI', 'name', 'symbol'];
+const fieldsToKeep = ['address', 'logoURI', 'symbol'];
 
 // Read the JSON file
 fs.readFile(inputFilePath, 'utf8', (err, data) => {

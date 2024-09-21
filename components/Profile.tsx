@@ -9,7 +9,6 @@ import { TokenData, TokenInfo } from '../types/types'; // Import interfaces from
 const createTokenMap = (data: TokenData[]): Record<string, TokenInfo> => {
   return data.reduce((map: Record<string, TokenInfo>, item: TokenData) => {
     map[item.address] = {
-      name: item.name,
       symbol: item.symbol,
       mintAddress: item.address,
       logoUrl: item.logoURI,
