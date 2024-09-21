@@ -3,32 +3,22 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { PublicKey, GetProgramAccountsFilter, ParsedAccountData } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import styles from '../styles/Profile.module.css';
-import tokenData from './tokens.json'; // Import the tokens.json file
+import tokenData from './tokens1.json'; // Import the cleaned JSON file
+import { TokenData, TokenInfo } from '../types/types'; // Import interfaces from types.ts
 
-interface TokenData {
-  address: string;
-  created_at: string;
-  daily_volume: number | null;
-  decimals: number;
-  extensions: Record<string, any>;
-  freeze_authority: string | null;
-  logoURI: string;
-  mint_authority: string | null;
-  minted_at: string | null;
-  name: string;
-  permanent_delegate: string | null;
-  symbol: string;
-  tags: string[];
-}
-
-interface TokenInfo {
-  name: string;
-  symbol: string;
-  mintAddress: string;
-  decimals: number;
-  logoUrl: string;
-  verified: boolean;
-}
+const createTokenMap = (data: TokenData[]): Record<string, TokenInfo> => {
+  return data.reduce((map: Record<string, TokenInfo>, item: TokenData) => {
+    map[item.address] = {
+      name: item.name,
+      symbol: item.symbol,
+      mintAddress: item.address,
+      decimals: item.decimals,
+      logoUrl: item.logoURI,
+      verified: false, // Assuming verification is not needed
+    };
+    return map;
+  }, {});
+};
 
 const Profile: React.FC = () => {
   const { publicKey } = useWallet();
@@ -38,61 +28,26 @@ const Profile: React.FC = () => {
   const [tokenMap, setTokenMap] = useState<Record<string, TokenInfo>>({});
 
   useEffect(() => {
-    // Create a token map from the JSON file
-    const tokenMap = (tokenData as TokenData[]).reduce((map: Record<string, TokenInfo>, item: TokenData) => {
-      map[item.address] = {
-        name: item.name,
-        symbol: item.symbol,
-        mintAddress: item.address,
-        decimals: item.decimals,
-        logoUrl: item.logoURI,
-        verified: item.tags && item.tags.includes('verified'),
-      };
-      return map;
-    }, {});
-    console.log('Token map:', tokenMap); // Debugging statement
-    setTokenMap(tokenMap);
+    setTokenMap(createTokenMap(tokenData as TokenData[]));
   }, []);
 
   useEffect(() => {
     const fetchTokens = async () => {
       if (publicKey) {
         try {
-          console.log('Fetching tokens for publicKey:', publicKey.toBase58());
-
-          // Verify connection by fetching wallet balance
-          const balance = await connection.getBalance(publicKey);
-          console.log('Wallet balance:', balance);
-
           const filters: GetProgramAccountsFilter[] = [
-            {
-              dataSize: 165, // size of token account
-            },
-            {
-              memcmp: {
-                offset: 32, // location of the owner public key
-                bytes: publicKey.toBase58(), // base58 encoded string of the public key
-              },
-            },
+            { dataSize: 165 },
+            { memcmp: { offset: 32, bytes: publicKey.toBase58() } },
           ];
 
-          const tokenAccounts = await connection.getParsedProgramAccounts(
-            TOKEN_PROGRAM_ID,
-            { filters: filters }
-          );
-
-          console.log('Token accounts fetched:', tokenAccounts);
-
+          const tokenAccounts = await connection.getParsedProgramAccounts(TOKEN_PROGRAM_ID, { filters });
           const mintAddresses = tokenAccounts.map(accountInfo => {
             const accountData = accountInfo.account.data;
             if ('parsed' in accountData) {
-              const parsedInfo = (accountData as ParsedAccountData).parsed.info;
-              return parsedInfo.mint;
+              return (accountData as ParsedAccountData).parsed.info.mint;
             }
             return null;
           }).filter(mintAddress => mintAddress !== null) as string[];
-
-          console.log('Mint addresses:', mintAddresses);
 
           const accountInfos = await connection.getMultipleAccountsInfo(
             mintAddresses.map(address => new PublicKey(address))
@@ -108,14 +63,11 @@ const Profile: React.FC = () => {
                 tokenBalance = accountData.parsed.info.tokenAmount.uiAmount;
               }
               if (tokenBalance > 0 && tokenInfo) {
-                console.log(`Token found: ${tokenBalance} ${tokenInfo.symbol}`); // Debugging statement
                 return { balance: tokenBalance, info: tokenInfo };
               }
             }
             return null;
           }).filter(token => token !== null) as { balance: number, info: TokenInfo }[];
-
-          console.log('Fetched tokens:', fetchedTokens);
 
           setTokens(fetchedTokens);
         } catch (error) {
@@ -124,7 +76,6 @@ const Profile: React.FC = () => {
           setLoading(false);
         }
       } else {
-        console.log('No public key found');
         setLoading(false);
       }
     };
