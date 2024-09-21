@@ -8,7 +8,7 @@ export const AppBar: FC = () => {
     return (
         <div className={styles.AppHeader}>
             <div className={styles.LeftSection}>
-                <Image src="/solanaLogo.png" height={50} width={50} />
+                <Image src="/solanaLogo.png" height={50} width={50} alt={''} />
                 <span className={styles.Title}>Matcher on Solana</span>
             </div>
             <div className={styles.MiddleSection}>
