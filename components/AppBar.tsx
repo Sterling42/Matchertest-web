@@ -21,7 +21,7 @@ export const AppBar: FC = () => {
             </div>
             <div className={styles.RightSection}>
                 <Link href="/profile">
-                    <button className={styles.NavButton}>Profile</button>
+                    <button className={styles.NavButton}>⚙️ Profile</button>
                 </Link>
                 <WalletMultiButton className={styles.WalletButton} />
             </div>
