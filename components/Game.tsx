@@ -4,7 +4,12 @@ import styles from '../styles/Game.module.css';
 
 const Game: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [token, setToken] = useState<{ name: string; symbol: string; logoURI: string } | null>(null);
+  const [token, setToken] = useState<{
+    name: string;
+    symbol: string;
+    logoURI: string;
+    address: string;
+  } | null>(null);
   const nodeRef = useRef(null);
 
   useEffect(() => {
@@ -12,7 +17,12 @@ const Game: React.FC = () => {
       try {
         const response = await fetch('/api/randomToken');
         const data = await response.json();
-        setToken({ name: data.name, symbol: data.symbol, logoURI: data.logoURI });
+        setToken({
+          name: data.name,
+          symbol: data.symbol,
+          logoURI: data.logoURI,
+          address: data.address, // Include address here
+        });
       } catch (error) {
         console.error('Error fetching token:', error);
       }
@@ -50,8 +60,8 @@ const Game: React.FC = () => {
           {token ? (
             <>
               <img src={token.logoURI} alt={token.name} className={styles.tokenImage} />
-              <p>{token.name}</p>
-              <p>{token.symbol}</p>
+              <p className={styles.tokenDescription}>Name: <span className={styles.tokenName}>{token.name}</span></p>
+              <p className={styles.tokenDescription}>Ticker: <span className={styles.tokenSymbol}>{token.symbol}</span></p>
             </>
           ) : (
             <p>Loading...</p>

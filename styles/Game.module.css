@@ -27,6 +27,10 @@
     top: 30px; /* Adjust position to follow the pattern */
     left: 30px; /* Adjust position to follow the pattern */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center; /* Center content horizontally */
 }
 
 .card {
@@ -45,7 +49,23 @@
 }
 
 .tokenImage {
-    width: 50px;
-    height: 50px;
+    width: 350px;
+    height: 350px;
     object-fit: cover;
+    border-radius: 50%; /* Make the image round */
+    border: 7px solid #000; /* Add border to the image */
+    margin: 20px 0; /* Add margin for spacing */
+    user-select: none; /* Make the image unselectable */
+    pointer-events: none; /* Disable pointer events */
+}
+
+.tokenName, .tokenSymbol {
+    font-size: 1.7em; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    margin: 10px 0; /* Add margin for spacing */
+}
+
+.tokenDescription {
+    font-size: 1.4em; /* Standard font size */
+    color: #555; /* Slightly lighter color for description */
 }
