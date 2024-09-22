@@ -8,7 +8,7 @@ import Game from '../components/Game';
 
 const Home: React.FC = () => {
   return (
-    <div className={`${homeStyles.App} ${homeStyles.unscrollable}`}>
+    <div className={`${homeStyles.App} ${homeStyles.unscrollable} ${homeStyles.customBackground}`}>
       <Head>
         <title>Matcher</title>
         <meta name="description" content="Wallet-Adapter" />

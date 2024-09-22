@@ -4,7 +4,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to right, #b22222, #252529, #006400);
+  background: #1d1d29;
 }
 
 .AppBody {
@@ -57,4 +57,8 @@
 .unscrollable {
   overflow: hidden;
   height: 100vh;
+}
+
+.customBackground {
+  background: linear-gradient(to right, #b22222, #252529, #006400);
 }

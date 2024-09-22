@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AppBar } from '../components/AppBar';
 import styles from '../styles/Stats.module.css';
+import homeStyles from '../styles/Home.module.css';
 
 interface TokenStats {
   _id: string;
@@ -32,7 +33,7 @@ const Stats: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className={homeStyles.App}>
       <AppBar />
       <div className={styles.statsContainer}>
         <h1>Token Statistics</h1>
