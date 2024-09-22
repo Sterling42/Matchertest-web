@@ -2,9 +2,15 @@ import { FC } from 'react';
 import styles from '../styles/AppHeader.module.css';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const AppBar: FC = () => {
+    const router = useRouter();
+
+    const navigateTo = (path: string) => {
+        router.push(path);
+    };
+
     return (
         <div className={styles.AppHeader}>
             <div className={styles.TopSection}>
@@ -13,36 +19,60 @@ export const AppBar: FC = () => {
                     <span className={styles.Title}>Matcher</span>
                 </div>
                 <div className={styles.MiddleSection}>
-                    <Link href="/">
-                        <button className={styles.NavButton}>🔥 Matcher</button>
-                    </Link>
-                    <Link href="/stats">
-                        <button className={styles.NavButton}>📊 Stats</button>
-                    </Link>
-                    <Link href="https://matcher.gitbook.io/matcher-docs">
-                        <button className={styles.NavButton}>📖 Docs</button>
-                    </Link>
-                    <Link href="/profile">
-                        <button className={styles.NavButton}>⚙️ Profile</button>
-                    </Link>
+                    <button
+                        className={`${styles.NavButton} ${router.pathname === '/' ? styles.active : ''}`}
+                        onClick={() => navigateTo('/')}
+                    >
+                        🔥 Matcher
+                    </button>
+                    <button
+                        className={`${styles.NavButton} ${router.pathname === '/stats' ? styles.active : ''}`}
+                        onClick={() => navigateTo('/stats')}
+                    >
+                        📊 Stats
+                    </button>
+                    <button
+                        className={styles.NavButton}
+                        onClick={() => window.location.href = 'https://matcher.gitbook.io/matcher-docs'}
+                    >
+                        📖 Docs
+                    </button>
+                    <button
+                        className={`${styles.NavButton} ${router.pathname === '/profile' ? styles.active : ''}`}
+                        onClick={() => navigateTo('/profile')}
+                    >
+                        ⚙️ Profile
+                    </button>
                 </div>
                 <div className={styles.RightSection}>
                     <WalletMultiButton className={styles.WalletButton} />
                 </div>
             </div>
             <div className={styles.BottomSection}>
-                <Link href="/">
-                    <button className={styles.NavButton}>🔥 Matcher</button>
-                </Link>
-                <Link href="/stats">
-                    <button className={styles.NavButton}>📊 Stats</button>
-                </Link>
-                <Link href="https://matcher.gitbook.io/matcher-docs">
-                    <button className={styles.NavButton}>📖 Docs</button>
-                </Link>
-                <Link href="/profile">
-                    <button className={styles.NavButton}>⚙️ Profile</button>
-                </Link>
+                <button
+                    className={`${styles.NavButton} ${router.pathname === '/' ? styles.active : ''}`}
+                    onClick={() => navigateTo('/')}
+                >
+                    🔥 Matcher
+                </button>
+                <button
+                    className={`${styles.NavButton} ${router.pathname === '/stats' ? styles.active : ''}`}
+                    onClick={() => navigateTo('/stats')}
+                >
+                    📊 Stats
+                </button>
+                <button
+                    className={styles.NavButton}
+                    onClick={() => window.location.href = 'https://matcher.gitbook.io/matcher-docs'}
+                >
+                    📖 Docs
+                </button>
+                <button
+                    className={`${styles.NavButton} ${router.pathname === '/profile' ? styles.active : ''}`}
+                    onClick={() => navigateTo('/profile')}
+                >
+                    ⚙️ Profile
+                </button>
             </div>
         </div>
     );

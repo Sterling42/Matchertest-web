@@ -7,6 +7,7 @@
     padding: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
+    height: auto; /* Change from 100vh to auto */
 }
 
 .TopSection {
@@ -15,13 +16,13 @@
     align-items: center;
     justify-content: space-between;
     height: 70px;
-    padding: 0 20px;
+    padding: 0 10px; /* Adjust padding to reduce empty space */
     width: 100%;
 }
 
 .Title {
     margin-left: 15px;
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 500;
     color: #ffffff;
 }
@@ -29,17 +30,56 @@
 .LeftSection {
     display: flex;
     align-items: center;
+    height: 100%; /* Ensure the left section takes the full height */
+    padding: 0 10px; /* Adjust padding to reduce empty space */
 }
 
 .MiddleSection {
     display: none;
     flex-grow: 1;
     justify-content: center;
+    height: 100%; /* Ensure the middle section takes the full height */
 }
 
 .RightSection {
     display: flex;
     align-items: center;
+    height: 100%; /* Ensure the right section takes the full height */
+}
+
+.NavButton {
+    padding: 0 5px; /* Adjust padding for narrower buttons */
+    border: none;
+    border-radius: 0;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    height: 100%; /* Ensure the button takes the full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove underline */
+}
+
+.NavButton:hover,
+.NavButton:active,
+.NavButton.active {
+    background-color: #333333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* Ensure underline is removed on hover and active */
+}
+
+.BottomSection {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #1e1e1e;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -65,9 +105,9 @@
     }
 
     .NavButton {
-        flex: none;
-        margin: 0 15px;
-        padding: 8px 10px;
-        border-radius: 4px;
+        padding: 0 30px; /* Adjust padding for wider buttons on web */
+        border-radius: 0;
+        height: 100%;
+        text-decoration: none; /* Remove underline */
     }
 }
