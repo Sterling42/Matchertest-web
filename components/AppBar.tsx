@@ -9,13 +9,15 @@ export const AppBar: FC = () => {
         <div className={styles.AppHeader}>
             <div className={styles.LeftSection}>
                 <Image src="/solanaLogo.png" height={50} width={50} alt={''} />
-                <span className={styles.Title}>Matcher on Solana</span>
+                <span className={styles.Title}>Matcher</span>
             </div>
             <div className={styles.MiddleSection}>
                 <Link href="/">
                     <button className={styles.NavButton}>🔥 Matcher</button>
                 </Link>
-                <button className={styles.NavButton}>📊 Stats</button>
+                <Link href="/stats">
+                    <button className={styles.NavButton}>📊 Stats</button>
+                </Link>
                 <button className={styles.NavButton}>📖 Docs</button>
                 <button className={styles.NavButton}>❓ Faq</button>
             </div>

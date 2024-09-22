@@ -27,14 +27,14 @@ const Game: React.FC = () => {
     }
   };
 
-  const trackToken = async (address: string, action: 'like' | 'dislike') => {
+  const trackToken = async (token: Token, action: 'like' | 'dislike') => {
     try {
       await fetch('/api/trackToken', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ address, action }),
+        body: JSON.stringify({ address: token.address, action, symbol: token.symbol, logoURI: token.logoURI }),
       });
     } catch (error) {
       console.error('Error tracking token:', error);
@@ -53,11 +53,11 @@ const Game: React.FC = () => {
 
       if (square.right < left) {
         console.log('Disliked');
-        if (token) trackToken(token.address, 'dislike');
+        if (token) trackToken(token, 'dislike');
         fetchToken();
       } else if (square.left > right) {
         console.log('Liked');
-        if (token) trackToken(token.address, 'like');
+        if (token) trackToken(token, 'like');
         fetchToken();
       }
 
