@@ -147,6 +147,6 @@
   }
 
   .TokenList {
-    width: 50%; /* Original width for larger screens */
+    width: 100%; /* Original width for larger screens */
   }
 }

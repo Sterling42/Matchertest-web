@@ -15,7 +15,7 @@ export const AppBar: FC = () => {
         <div className={styles.AppHeader}>
             <div className={styles.TopSection}>
                 <div className={styles.LeftSection}>
-                    <Image src="/matcherLogo.png" height={70} width={70} alt={''} /> {/* Increased logo size */}
+                    <Image src="/matcherLogo.png" height={130} width={130} alt={''} /> {/* Increased logo size */}
                 </div>
                 <div className={styles.MiddleSection}>
                     <button
