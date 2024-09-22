@@ -111,3 +111,10 @@
         text-decoration: none; /* Remove underline */
     }
 }
+
+@media (max-width: 767px) {
+    .NavButton {
+        padding: 10px 5px; /* Increase padding for taller buttons */
+        height: 60px; /* Increase height for taller buttons */
+    }
+}
