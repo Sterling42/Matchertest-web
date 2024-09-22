@@ -1,9 +1,11 @@
 /* styles/Profile.module.css */
 .Profile {
   text-align: center;
-  padding: 40px; /* Increased padding */
-  width: 90%; /* Increased width */
+  padding: 20px; /* Reduced padding for mobile */
+  width: 100%; /* Full width for mobile */
   margin: 0 auto; /* Center the container */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .ProfileHeader {
@@ -14,8 +16,8 @@
 .ProfilePicture {
   border: 2px solid #000;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 100px; /* Reduced size for mobile */
+  height: 100px; /* Reduced size for mobile */
   margin: 0 auto 20px;
   background-size: cover;
   background-position: center;
@@ -31,12 +33,13 @@
 }
 
 .XPBar {
-  width: 80%;
+  width: 100%; /* Full width for mobile */
   height: 20px;
   background-color: #ddd;
   margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .XPBarFill {
@@ -47,22 +50,28 @@
 
 .ProfileContainer {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column; /* Stack items vertically for mobile */
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .ProfileInfo {
   flex: 1;
-  margin-right: 20px;
-  width: 50%;
+  margin-right: 0; /* Remove margin for mobile */
+  width: 100%; /* Full width for mobile */
+  margin-bottom: 20px; /* Add margin to separate sections */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .TokenList {
   flex: 1;
   margin-top: 20px;
   text-align: left;
-  width: 50%;
+  width: 100%; /* Full width for mobile */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  padding-bottom: 40px;
 }
 
 .TokenGrid {
@@ -108,4 +117,36 @@
   border-radius: 5px;
   white-space: nowrap;
   z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .Profile {
+    padding: 40px; /* Increased padding for larger screens */
+    width: 90%; /* Increased width for larger screens */
+  }
+
+  .ProfilePicture {
+    width: 150px; /* Original size for larger screens */
+    height: 150px; /* Original size for larger screens */
+  }
+
+  .XPBar {
+    width: 80%; /* Original width for larger screens */
+  }
+
+  .ProfileContainer {
+    flex-direction: row; /* Original layout for larger screens */
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .ProfileInfo {
+    margin-right: 20px; /* Original margin for larger screens */
+    width: 50%; /* Original width for larger screens */
+    margin-bottom: 0; /* Remove bottom margin for larger screens */
+  }
+
+  .TokenList {
+    width: 50%; /* Original width for larger screens */
+  }
 }

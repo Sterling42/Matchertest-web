@@ -19,7 +19,9 @@ const Profile: React.FC = () => {
             </div>
           </div>
         </div>
-        <Tokens />
+        <div className={styles.TokenList}>
+          <Tokens />
+        </div>
       </div>
     </div>
   );

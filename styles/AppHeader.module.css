@@ -8,6 +8,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Roboto', sans-serif;
     height: auto; /* Change from 100vh to auto */
+    width: 100%; /* Ensure the header takes the full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .TopSection {
@@ -17,14 +19,8 @@
     justify-content: space-between;
     height: 70px;
     padding: 0 10px; /* Adjust padding to reduce empty space */
-    width: 100%;
-}
-
-.Title {
-    margin-left: 15px;
-    font-size: 34px;
-    font-weight: 500;
-    color: #ffffff;
+    width: 100%; /* Ensure the section takes the full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .LeftSection {
@@ -61,6 +57,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none; /* Remove underline */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .NavButton:hover,
@@ -80,6 +77,8 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    z-index: 1000
 }
 
 @media (min-width: 768px) {
@@ -116,5 +115,9 @@
     .NavButton {
         padding: 10px 5px; /* Increase padding for taller buttons */
         height: 60px; /* Increase height for taller buttons */
+    }
+
+    .RightSection {
+        padding-right: 20px; /* Add padding to the right side */
     }
 }
