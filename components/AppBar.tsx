@@ -32,16 +32,16 @@ export const AppBar: FC = () => {
                         📊 Stats
                     </button>
                     <button
-                        className={styles.NavButton}
-                        onClick={() => window.location.href = 'https://matcher.gitbook.io/matcher-docs'}
-                    >
-                        📖 Docs
-                    </button>
-                    <button
                         className={`${styles.NavButton} ${router.pathname === '/profile' ? styles.active : ''}`}
                         onClick={() => navigateTo('/profile')}
                     >
                         ⚙️ Profile
+                    </button>
+                    <button
+                        className={styles.NavButton}
+                        onClick={() => window.location.href = 'https://matcher.gitbook.io/matcher-docs'}
+                    >
+                        📖 Docs
                     </button>
                 </div>
                 <div className={styles.RightSection}>
@@ -62,16 +62,16 @@ export const AppBar: FC = () => {
                     📊 Stats
                 </button>
                 <button
-                    className={styles.NavButton}
-                    onClick={() => window.location.href = 'https://matcher.gitbook.io/matcher-docs'}
-                >
-                    📖 Docs
-                </button>
-                <button
                     className={`${styles.NavButton} ${router.pathname === '/profile' ? styles.active : ''}`}
                     onClick={() => navigateTo('/profile')}
                 >
                     ⚙️ Profile
+                </button>
+                <button
+                    className={styles.NavButton}
+                    onClick={() => window.location.href = 'https://matcher.gitbook.io/matcher-docs'}
+                >
+                    📖 Docs
                 </button>
             </div>
         </div>
