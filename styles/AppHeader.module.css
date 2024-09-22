@@ -16,15 +16,7 @@
     justify-content: space-between;
     height: 70px;
     padding: 0 20px;
-}
-
-.LeftSection {
-    display: flex;
-    align-items: center;
-}
-
-.MiddleSection {
-    display: none;
+    width: 100%;
 }
 
 .Title {
@@ -34,51 +26,20 @@
     color: #ffffff;
 }
 
-.RightSection {
+.LeftSection {
     display: flex;
     align-items: center;
 }
 
-.BottomSection {
+.MiddleSection {
+    display: none;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.RightSection {
     display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    background-color: #1e1e1e;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.NavButton {
-    flex: 1;
-    margin: 0;
-    padding: 8px 0;
-    background-color: #3a3a3a;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    font-size: 20px;
-    color: #ffffff;
-    transition: background-color 0.3s ease;
-    text-align: center;
-}
-
-.NavButton:hover {
-    background-color: #575757;
-}
-
-.WalletButton {
-    background-color: #3a3a3a !important;
-    color: #ffffff !important;
-    border-radius: 4px !important;
-    padding: 8px 16px !important;
-    font-size: 16px !important;
-    transition: background-color 0.3s ease !important;
-}
-
-.WalletButton:hover {
-    background-color: #575757 !important;
+    align-items: center;
 }
 
 @media (min-width: 768px) {
