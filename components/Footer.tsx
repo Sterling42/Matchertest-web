@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.leftSection}>
-        <p>© 2023 Your Company. All rights reserved.</p>
+        <p>© 2024 LonleyApeHQ. All rights reserved.</p>
         <a href="/privacy-policy" className={styles.link}>Privacy Policy</a>
         <a href="/terms-of-use" className={styles.link}>Terms of Use</a>
       </div>
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         <a href="https://t.me/yourcompany" className={styles.iconButton} aria-label="Telegram">
           <FaTelegramPlane />
         </a>
-        <a href="https://twitter.com/yourcompany" className={styles.iconButton} aria-label="Twitter">
+        <a href="https://x.com/ApeMatcher" className={styles.iconButton} aria-label="Twitter">
           <FaTwitter />
         </a>
       </div>

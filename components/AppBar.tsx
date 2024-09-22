@@ -18,7 +18,9 @@ export const AppBar: FC = () => {
                 <Link href="/stats">
                     <button className={styles.NavButton}>📊 Stats</button>
                 </Link>
-                <button className={styles.NavButton}>📖 Docs</button>
+                <Link href="https://app.gitbook.com/o/BG8UfWHymX9L1UOMA1ZH/s/1jgWAuYOa15VAw0dt5JN/features/achievements">
+                    <button className={styles.NavButton}>📖 Docs</button>
+                </Link>
                 <button className={styles.NavButton}>❓ Faq</button>
             </div>
             <div className={styles.RightSection}>
