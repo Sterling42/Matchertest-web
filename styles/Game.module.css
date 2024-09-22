@@ -83,3 +83,31 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+@media (max-width: 768px) {
+    .gameFrame {
+        width: 60%;
+        height: 50vh;
+    }
+
+    .card, .draggableSquare {
+        width: 90%;
+        height: 80%;
+        top: 10px;
+        left: 10px;
+    }
+
+    .tokenImage {
+        width: 200px;
+        height: 200px;
+        border: 5px solid #000;
+    }
+
+    .tokenName, .tokenSymbol {
+        font-size: 1.2em;
+    }
+
+    .tokenDescription {
+        font-size: 1em;
+    }
+}

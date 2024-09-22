@@ -6,6 +6,7 @@
   flex-direction: column;
   background: linear-gradient(to right, #b22222, #252529, #006400);
 }
+
 .AppBody {
   height: 100%;
   display: flex;
@@ -23,7 +24,6 @@
   align-items: center;
 }
 
-/* styles/Home.module.css */
 .input {
   background: #f2f2f2;
 }
@@ -52,4 +52,9 @@
   flex-grow: 1;
   padding-bottom: 80px;
   padding-top: 10px; /* Add bottom padding to avoid overlap with footer */
+}
+
+.unscrollable {
+  overflow: hidden;
+  height: 100vh;
 }

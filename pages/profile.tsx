@@ -1,6 +1,5 @@
 import React from 'react';
 import { AppBar } from '../components/AppBar';
-import Footer from '../components/Footer';
 import Profile from '../components/Profile';
 import styles from '../styles/Home.module.css';
 
@@ -11,7 +10,6 @@ const ProfilePage: React.FC = () => {
       <div className={styles.AppBody}>
         <Profile />
       </div>
-      <Footer />
     </div>
   );
 };

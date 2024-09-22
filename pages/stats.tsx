@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { AppBar } from '../components/AppBar';
-import Footer from '../components/Footer';
 import styles from '../styles/Stats.module.css';
 
 interface TokenStats {
@@ -60,7 +59,6 @@ const Stats: React.FC = () => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };
