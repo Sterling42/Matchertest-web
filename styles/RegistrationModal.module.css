@@ -1,0 +1,79 @@
+/* styles/RegistrationModal.module.css */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dim the main page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .modalContent {
+    background: rgba(29, 29, 41, 0.9); /* Make the modal background a bit transparent */
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-in-out;
+  }
+  
+  .title {
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 15px;
+    color: #ccc;
+  }
+  
+  .inputText {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+  }
+  
+  .inputCheckbox {
+    margin-right: 10px;
+  }
+  
+  .button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #003500;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
