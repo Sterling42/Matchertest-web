@@ -3,20 +3,7 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { PublicKey, GetProgramAccountsFilter, ParsedAccountData } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import styles from '../styles/Profile.module.css';
-import tokenData from './tokens1.json';
-import { TokenData, TokenInfo } from '../pages/api/interface/token';
-
-const createTokenMap = (data: TokenData[]): Record<string, TokenInfo> => {
-  return data.reduce((map: Record<string, TokenInfo>, item: TokenData) => {
-    map[item.address] = {
-      symbol: item.symbol,
-      mintAddress: item.address,
-      logoUrl: item.logoURI,
-      verified: false,
-    };
-    return map;
-  }, {});
-};
+import { TokenInfo } from '../pages/api/interface/token';
 
 const Tokens: React.FC = () => {
   const { publicKey } = useWallet();
@@ -26,7 +13,26 @@ const Tokens: React.FC = () => {
   const [tokenMap, setTokenMap] = useState<Record<string, TokenInfo>>({});
 
   useEffect(() => {
-    setTokenMap(createTokenMap(tokenData as TokenData[]));
+    const fetchTokenMap = async () => {
+      try {
+        const response = await fetch('/api/tokens');
+        const data = await response.json();
+        const map = data.reduce((acc: Record<string, TokenInfo>, item: any) => {
+          acc[item.address] = {
+            symbol: item.symbol,
+            mintAddress: item.address,
+            logoUrl: item.logoURI,
+            verified: false,
+          };
+          return acc;
+        }, {});
+        setTokenMap(map);
+      } catch (error) {
+        console.error('Error fetching token map:', error);
+      }
+    };
+
+    fetchTokenMap();
   }, []);
 
   useEffect(() => {
