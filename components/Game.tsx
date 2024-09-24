@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
 import styles from '../styles/Game.module.css';
-import { Token } from '../pages/api/interface/gameTypes';
+import { Token } from '../pages/api/interface/game';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 const Game: React.FC = () => {
+  const { connected } = useWallet();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [token, setToken] = useState<Token | null>(null);
   const [loading, setLoading] = useState(true);
@@ -70,7 +72,7 @@ const Game: React.FC = () => {
       <div className={styles.card}></div>
       <div className={styles.card}></div>
       <div className={styles.card}></div>
-      <Draggable nodeRef={nodeRef} position={position} onStop={(e, data) => handleStop(data)}>
+      <Draggable nodeRef={nodeRef} position={position} onStop={(e, data) => handleStop(data)} disabled={!connected}>
         <div ref={nodeRef} className={styles.draggableSquare}>
           {loading ? (
             <div className={styles.spinner}></div>
@@ -82,6 +84,11 @@ const Game: React.FC = () => {
                 <p className={styles.tokenDescription}>Ticker: <span className={styles.tokenSymbol}>{token.symbol}</span></p>
               </>
             )
+          )}
+          {!connected && (
+            <div className={styles.connectWalletPrompt}>
+              Please connect your wallet to play.
+            </div>
           )}
         </div>
       </Draggable>

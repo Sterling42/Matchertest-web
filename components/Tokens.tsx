@@ -4,7 +4,7 @@ import { PublicKey, GetProgramAccountsFilter, ParsedAccountData } from '@solana/
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import styles from '../styles/Profile.module.css';
 import tokenData from './tokens1.json';
-import { TokenData, TokenInfo } from '../pages/api/interface/tokenTypes';
+import { TokenData, TokenInfo } from '../pages/api/interface/token';
 
 const createTokenMap = (data: TokenData[]): Record<string, TokenInfo> => {
   return data.reduce((map: Record<string, TokenInfo>, item: TokenData) => {

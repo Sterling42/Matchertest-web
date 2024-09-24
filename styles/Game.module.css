@@ -84,6 +84,13 @@
     100% { transform: rotate(360deg); }
 }
 
+.connectWalletPrompt {
+    font-size: 1.5em;
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+
 @media (max-width: 768px) {
     .gameFrame {
         width: 60%;
