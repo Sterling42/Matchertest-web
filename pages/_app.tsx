@@ -3,7 +3,8 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import {
-  PhantomWalletAdapter
+  PhantomWalletAdapter,
+  SolflareWalletAdapter
 } from "@solana/wallet-adapter-wallets";
 import { BackpackWalletAdapter } from "@solana/wallet-adapter-backpack";
 
@@ -21,7 +22,8 @@ const WalletContextProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
-      new BackpackWalletAdapter()
+      new BackpackWalletAdapter(),
+      new SolflareWalletAdapter()
     ],
     []
   );
