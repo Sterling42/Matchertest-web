@@ -118,8 +118,9 @@
 
 @media (max-width: 768px) {
     .gameFrame {
-        width: 60%;
-        height: 50vh;
+        width: 70%;
+        height: 60vh;
+        margin-bottom: -20px;
     }
 
     .card, .draggableSquare {
