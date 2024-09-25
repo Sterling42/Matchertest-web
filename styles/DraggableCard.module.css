@@ -33,12 +33,12 @@
 }
 
 .tokenImage {
-    width: 350px;
-    height: 350px;
+    width: 80%;
+    height: auto;
     object-fit: cover;
     border-radius: 50%; /* Make the image round */
     border: 7px solid #000; /* Add border to the image */
-    margin: 20px 0; /* Increase margin for more space */
+    margin: 10px 0 70px 0; /* Adjust margin to move the image higher */
     user-select: none; /* Make the image unselectable */
     pointer-events: none; /* Disable pointer events */
 }
@@ -94,6 +94,7 @@
         width: 150px;
         height: 150px;
         border: 5px solid #000;
+        margin: 0 0 10px 0; /* Adjust margin to move the image higher */
     }
 
     .tokenName, .tokenSymbol, .tokenTags {

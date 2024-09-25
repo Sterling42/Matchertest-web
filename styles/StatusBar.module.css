@@ -76,7 +76,7 @@
   .button {
     font-size: 16px; /* Smaller font size for buttons */
     padding: 3px 6px; /* Smaller padding for buttons */
-    width: 120px; /* Adjusted width for mobile */
+    width: 125px; /* Adjusted width for mobile */
     height: 50px; /* Adjusted height for mobile */
   }
 }
