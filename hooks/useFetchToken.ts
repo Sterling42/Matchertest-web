@@ -4,7 +4,7 @@ import { Token } from '../pages/api/interface/game';
 
 const useFetchToken = () => {
   const [token, setToken] = useState<Token | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchToken = async () => {
     setLoading(true);
