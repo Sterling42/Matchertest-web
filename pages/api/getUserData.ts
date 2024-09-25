@@ -28,7 +28,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(404).json({ error: 'User not found' });
       }
 
-      res.status(200).json({ swipes: user.swipes, cooldown: '5m' }); // Assuming cooldown is '5m'
+      res.status(200).json({
+        swipes: user.swipes,
+        xp: user.profile.xp,
+        rxp: user.profile.rxp,
+        cooldown: '5m', // Assuming cooldown is '5m'
+      });
     } catch (error) {
       console.error('Error fetching user data:', error);
       res.status(500).json({ error: 'Internal Server Error' });

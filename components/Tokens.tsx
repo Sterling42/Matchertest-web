@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { PublicKey, GetProgramAccountsFilter, ParsedAccountData } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import styles from '../styles/Profile.module.css';
+import tokenStyles from '../styles/Token.module.css';
 
 export interface TokenData {
   address: string;
@@ -74,23 +74,23 @@ const Tokens: React.FC = () => {
   }, [publicKey, connection]);
 
   return (
-    <div className={styles.TokenList}>
-      <h3>Tokens:</h3>
+    <div className={tokenStyles.TokenList}>
+      <h3>Holdings:</h3>
       {loading ? (
         <div>Loading tokens...</div>
       ) : tokens.length > 0 ? (
-        <div className={styles.TokenGrid}>
+        <div className={tokenStyles.TokenGrid}>
           {tokens.map((token, index) => (
-            <div key={index} className={styles.TokenListItem}>
+            <div key={index} className={tokenStyles.TokenListItem}>
               {token.info.logoURI ? (
                 <img
                   src={token.info.logoURI}
                   alt={token.info.symbol}
-                  className={styles.TokenImage}
+                  className={tokenStyles.TokenImage}
                   title={`${token.balance} ${token.info.symbol}`}
                 />
               ) : (
-                <div className={styles.EmptyTokenImage} title={`${token.balance} ${token.info.symbol}`}>
+                <div className={tokenStyles.EmptyTokenImage} title={`${token.balance} ${token.info.symbol}`}>
                   ?
                 </div>
               )}

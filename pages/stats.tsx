@@ -91,32 +91,34 @@ const Stats: React.FC = () => {
             </button>
 
             <h2>Highest Dislike Ratio Tokens</h2>
-            <div className={styles.tokenGrid}>
-              {topDislikes.map((token) => {
-                const likes = token.likes || 0;
-                const dislikes = Math.abs(token.dislikes || 0);
-                return (
-                  <div key={token._id} className={styles.tokenCard}>
-                    <img src={token.logoURI} alt={token.symbol} className={styles.tokenImage} />
-                    <p className={styles.tokenSymbol}>{token.symbol}</p>
-                    <div className={styles.ratioBar}>
-                      <div
-                        className={styles.likesBar}
-                        style={{ width: `${(likes / (likes + dislikes || 1)) * 100}%` }}
-                      ></div>
-                      <div
-                        className={styles.dislikesBar}
-                        style={{ width: `${(dislikes / (likes + dislikes || 1)) * 100}%` }}
-                      ></div>
+            <div className={styles.bottomContentWrapper}>
+              <div className={styles.tokenGrid}>
+                {topDislikes.map((token) => {
+                  const likes = token.likes || 0;
+                  const dislikes = Math.abs(token.dislikes || 0);
+                  return (
+                    <div key={token._id} className={styles.tokenCard}>
+                      <img src={token.logoURI} alt={token.symbol} className={styles.tokenImage} />
+                      <p className={styles.tokenSymbol}>{token.symbol}</p>
+                      <div className={styles.ratioBar}>
+                        <div
+                          className={styles.likesBar}
+                          style={{ width: `${(likes / (likes + dislikes || 1)) * 100}%` }}
+                        ></div>
+                        <div
+                          className={styles.dislikesBar}
+                          style={{ width: `${(dislikes / (likes + dislikes || 1)) * 100}%` }}
+                        ></div>
+                      </div>
+                      <p>Total Votes: {likes + dislikes}</p>
                     </div>
-                    <p>Total Votes: {likes + dislikes}</p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              <button className={styles.loadMoreButton} onClick={() => setShowMoreDislikes(!showMoreDislikes)}>
+                {showMoreDislikes ? 'Show Less' : 'Load More'}
+              </button>
             </div>
-            <button className={styles.loadMoreButton} onClick={() => setShowMoreDislikes(!showMoreDislikes)}>
-              {showMoreDislikes ? 'Show Less' : 'Load More'}
-            </button>
           </>
         )}
       </div>

@@ -8,6 +8,20 @@
   grid-template-columns: repeat(10, 1fr);
   gap: 20px;
   justify-content: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .tokenGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .loadMoreButton {
+    margin-bottom: 10px;
+  }
 }
 
 .tokenCard {
@@ -58,4 +72,8 @@
 
 .loadMoreButton:hover {
   background-color: #0056b3;
+}
+
+.bottomContentWrapper {
+  padding-bottom: 80px; /* Adjust this value as needed */
 }
