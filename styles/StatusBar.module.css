@@ -41,11 +41,17 @@
   cursor: pointer;
   transition-duration: 0.4s;
   border-radius: 10px; /* Rounded corners */
-  width: 50px; /* Fixed width for buttons */
-  height: 50px; /* Fixed height for buttons */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Media query for larger screens */
+@media (min-width: 601px) {
+  .button {
+    width: 130px; /* Adjusted width for larger screens */
+    height: 55px; /* Adjusted height for larger screens */
+  }
 }
 
 .button:hover {
