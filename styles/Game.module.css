@@ -18,25 +18,6 @@
     left: 20px;
 }
 
-.draggableSquare {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    color: black;
-    border: 2px solid #000;
-    border-radius: 10px; /* Rounded corners */
-    position: absolute;
-    top: 30px; /* Adjust position to follow the pattern */
-    left: 30px; /* Adjust position to follow the pattern */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    font-family: 'Josefin Sans', sans-serif; /* Apply the new font */
-    padding: 0px; /* Add padding for spacing */
-}
-
 .card {
     width: 100%;
     height: 100%;
@@ -53,69 +34,6 @@
     font-family: 'Josefin Sans', sans-serif; /* Apply the new font */
 }
 
-.tokenImage {
-    width: 350px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 50%; /* Make the image round */
-    border: 7px solid #000; /* Add border to the image */
-    margin: 20px 0; /* Increase margin for more space */
-    user-select: none; /* Make the image unselectable */
-    pointer-events: none; /* Disable pointer events */
-}
-
-.tokenName, .tokenSymbol, .tokenTags {
-    font-size: 1.5em; /* Adjust font size */
-    font-weight: bold; /* Make text bold */
-    margin: 5px 0; /* Reduce margin for closer spacing */
-}
-
-.tokenDescription {
-    font-size: 1.2em; /* Adjust font size */
-    color: #555; /* Slightly lighter color for description */
-    margin: 5px 0; /* Reduce margin for closer spacing */
-}
-
-.chartButton {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    margin: 10px 0; /* Add margin for spacing */
-    cursor: pointer;
-    transition-duration: 0.4s;
-    border-radius: 5px; /* Rounded corners */
-}
-
-.chartButton:hover {
-    background-color: #111;
-}
-
-.spinner {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.connectWalletPrompt {
-    font-size: 1.5em;
-    color: red;
-    text-align: center;
-    margin-top: 20px;
-}
-
 @media (max-width: 768px) {
     .gameFrame {
         width: 70%;
@@ -123,7 +41,7 @@
         margin-bottom: -20px;
     }
 
-    .card, .draggableSquare {
+    .card {
         width: 85%;
         height: 80%;
         top: 10px;

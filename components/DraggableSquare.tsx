@@ -1,7 +1,7 @@
 // components/DraggableSquare.tsx
 import React from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
-import styles from '../styles/Game.module.css';
+import styles from '../styles/DraggableCard.module.css';
 import { Token } from '../pages/api/interface/game';
 import { DraggableSquareProps } from '../pages/api/interface/draggableSquareProps';
 
