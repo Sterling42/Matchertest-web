@@ -14,6 +14,13 @@ interface DraggableSquareProps {
 }
 
 const DraggableSquare: React.FC<DraggableSquareProps> = ({ token, loading, position, onStop, connected, nodeRef }) => {
+  const handleChartButtonClick = () => {
+    if (token) {
+      const url = `https://dexscreener.com/solana/${token.address}`;
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <Draggable nodeRef={nodeRef} position={position} onStop={(e, data) => onStop(data)} disabled={!connected}>
       <div ref={nodeRef} className={styles.draggableSquare}>
@@ -25,7 +32,7 @@ const DraggableSquare: React.FC<DraggableSquareProps> = ({ token, loading, posit
               <img src={token.logoURI} alt={token.name} className={styles.tokenImage} />
               <p className={styles.tokenDescription}>Name: <span className={styles.tokenName}>{token.name}</span></p>
               <p className={styles.tokenDescription}>Ticker: <span className={styles.tokenSymbol}>{token.symbol}</span></p>
-              <button className={styles.chartButton}>Chart</button>
+              <button className={styles.chartButton} onClick={handleChartButtonClick}>Chart</button>
             </>
           )
         )}

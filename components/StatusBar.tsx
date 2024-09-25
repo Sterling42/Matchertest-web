@@ -11,9 +11,11 @@ const StatusBar: React.FC<StatusBarProps> = ({ swipes, cooldown }) => {
   return (
     <nav className={statusBarStyles.statusBar}>
       <div className={statusBarStyles.centerContent}>
-        <span>Swipes: {swipes} / {cooldown}</span>
-        <button className={statusBarStyles.button}>📥</button>
-        <button className={statusBarStyles.button}>⚙️</button>
+        <div className={statusBarStyles.textContainer}>
+          <span>Swipes: {swipes} / {cooldown}</span>
+        </div>
+        <button className={statusBarStyles.button}>📥Matches</button>
+        <button className={statusBarStyles.button}>⚙️Settings</button>
       </div>
     </nav>
   );

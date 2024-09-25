@@ -148,3 +148,10 @@
         padding: 5px 10px; /* Adjust padding for mobile */
     }
 }
+
+/* Additional margin for web (non-mobile) devices */
+@media (min-width: 769px) {
+    .tokenImage {
+        margin: 40px 0; /* Increase margin for more space */
+    }
+}

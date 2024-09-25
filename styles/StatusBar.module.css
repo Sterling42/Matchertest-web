@@ -1,49 +1,76 @@
 /* styles/StatusBar.module.css */
 .statusBar {
-    background-color: #ffffff;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    width: 30%; /* Reduce width to 30% */
-    border-radius: 20px; /* Make the borders round */
-    margin: 20px auto; /* Center the status bar and add some margin */
-    margin-top: 30px; /* Move the status bar further down from the app bar */
+  background-color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 30%; /* Reduce width to 30% */
+  border-radius: 20px; /* Make the borders round */
+  margin: 20px auto; /* Center the status bar and add some margin */
+  margin-top: 30px; /* Move the status bar further down from the app bar */
+  font-size: 25px;
+}
+
+.centerContent {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Increased gap for more space */
+}
+
+.textContainer {
+  width: 150px; /* Fixed width for the text container */
+  text-align: center; /* Center the text within the container */
+}
+
+.textContainer span {
+  color: rgb(0, 0, 0);
+}
+
+.button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Reduced padding for a smaller size */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px; /* Reduced font size */
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-radius: 10px; /* Rounded corners */
+  width: 50px; /* Fixed width for buttons */
+  height: 50px; /* Fixed height for buttons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  background-color: #111;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+  .statusBar {
+    width: 90%; /* Use full width on mobile */
+    font-size: 18px; /* Smaller font size for swipes and cooldown */
   }
-  
+
   .centerContent {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 10px; /* Add gap for spacing on mobile */
   }
-  
-  .centerContent span {
-    color: rgb(0, 0, 0);
+
+  .textContainer {
+    width: auto; /* Adjust width for mobile */
   }
-  
+
   .button {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 30px;
-    margin: 4px 2px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    border-radius: 50%; /* Make the buttons round */
+    font-size: 16px; /* Smaller font size for buttons */
+    padding: 3px 6px; /* Smaller padding for buttons */
+    width: 120px; /* Adjusted width for mobile */
+    height: 50px; /* Adjusted height for mobile */
   }
-  
-  .button:hover {
-    background-color: #111;
-  }
-  
-  /* Media query for mobile devices */
-  @media (max-width: 600px) {
-    .statusBar {
-      width: 90%; /* Use full width on mobile */
-    }
-  }
+}
