@@ -1,3 +1,4 @@
+// components/Game.tsx
 import React, { useState, useRef } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
 import styles from '../styles/Game.module.css';
@@ -6,7 +7,12 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import useFetchToken from '../hooks/useFetchToken';
 import DraggableSquare from './DraggableSquare';
 
-const Game: React.FC = () => {
+interface GameProps {
+  onSwipe: () => void;
+  swipes: number;
+}
+
+const Game: React.FC<GameProps> = ({ onSwipe, swipes }) => {
   const { connected, publicKey } = useWallet();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const nodeRef = useRef(null);
@@ -39,12 +45,20 @@ const Game: React.FC = () => {
           }),
         });
       }
+
+      // Call onSwipe to update the swipe count in the StatusBar
+      onSwipe();
     } catch (error) {
       console.error('Error tracking token:', error);
     }
   };
 
   const handleStop = (data: DraggableData) => {
+    if (swipes <= 0) {
+      console.log('No swipes left');
+      return;
+    }
+
     const gameFrame = document.querySelector(`.${styles.gameFrame}`);
     if (gameFrame) {
       const { left, right } = gameFrame.getBoundingClientRect();
