@@ -25,6 +25,8 @@ const DraggableSquare: React.FC<DraggableSquareProps> = ({ token, loading, posit
               <img src={token.logoURI} alt={token.name} className={styles.tokenImage} />
               <p className={styles.tokenDescription}>Name: <span className={styles.tokenName}>{token.name}</span></p>
               <p className={styles.tokenDescription}>Ticker: <span className={styles.tokenSymbol}>{token.symbol}</span></p>
+              <p className={styles.tokenDescription}>Tags: <span className={styles.tokenTags}>{token.tags ? token.tags.join(', ') : 'No tags available'}</span></p>
+              <button className={styles.chartButton}>Chart</button>
             </>
           )
         )}

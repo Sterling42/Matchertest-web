@@ -1,4 +1,6 @@
 /* styles/Game.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
 .gameFrame {
     width: 450px;
     height: 650px;
@@ -31,6 +33,8 @@
     flex-direction: column;
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
+    font-family: 'Josefin Sans', sans-serif; /* Apply the new font */
+    padding: 0px; /* Add padding for spacing */
 }
 
 .card {
@@ -46,6 +50,7 @@
     left: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* 3D effect */
     overflow: hidden; /* Ensure content doesn't overflow */
+    font-family: 'Josefin Sans', sans-serif; /* Apply the new font */
 }
 
 .tokenImage {
@@ -54,20 +59,40 @@
     object-fit: cover;
     border-radius: 50%; /* Make the image round */
     border: 7px solid #000; /* Add border to the image */
-    margin: 20px 0; /* Add margin for spacing */
+    margin: 20px 0; /* Increase margin for more space */
     user-select: none; /* Make the image unselectable */
     pointer-events: none; /* Disable pointer events */
 }
 
-.tokenName, .tokenSymbol {
-    font-size: 1.7em; /* Increase font size */
+.tokenName, .tokenSymbol, .tokenTags {
+    font-size: 1.5em; /* Adjust font size */
     font-weight: bold; /* Make text bold */
-    margin: 10px 0; /* Add margin for spacing */
+    margin: 5px 0; /* Reduce margin for closer spacing */
 }
 
 .tokenDescription {
-    font-size: 1.4em; /* Standard font size */
+    font-size: 1.2em; /* Adjust font size */
     color: #555; /* Slightly lighter color for description */
+    margin: 5px 0; /* Reduce margin for closer spacing */
+}
+
+.chartButton {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 10px 0; /* Add margin for spacing */
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 5px; /* Rounded corners */
+}
+
+.chartButton:hover {
+    background-color: #111;
 }
 
 .spinner {
@@ -110,11 +135,16 @@
         border: 5px solid #000;
     }
 
-    .tokenName, .tokenSymbol {
-        font-size: 1.2em;
+    .tokenName, .tokenSymbol, .tokenTags {
+        font-size: 1.2em; /* Smaller font size on mobile */
     }
 
     .tokenDescription {
-        font-size: 1em;
+        font-size: 1em; /* Smaller font size on mobile */
+    }
+
+    .chartButton {
+        font-size: 0.8em; /* Smaller font size on mobile */
+        padding: 5px 10px; /* Adjust padding for mobile */
     }
 }

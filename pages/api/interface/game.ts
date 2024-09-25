@@ -3,4 +3,5 @@ export interface Token {
   symbol: string;
   logoURI: string;
   address: string;
+  tags: string[];
 }
