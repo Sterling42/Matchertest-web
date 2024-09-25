@@ -3,37 +3,18 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { PublicKey, GetProgramAccountsFilter, ParsedAccountData } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import styles from '../styles/Profile.module.css';
-import { TokenInfo } from '../pages/api/interface/token';
+
+export interface TokenData {
+  address: string;
+  logoURI: string;
+  symbol: string;
+}
 
 const Tokens: React.FC = () => {
   const { publicKey } = useWallet();
   const { connection } = useConnection();
-  const [tokens, setTokens] = useState<{ balance: number, info: TokenInfo }[]>([]);
+  const [tokens, setTokens] = useState<{ balance: number, info: TokenData }[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [tokenMap, setTokenMap] = useState<Record<string, TokenInfo>>({});
-
-  useEffect(() => {
-    const fetchTokenMap = async () => {
-      try {
-        const response = await fetch('/api/tokens');
-        const data = await response.json();
-        const map = data.reduce((acc: Record<string, TokenInfo>, item: any) => {
-          acc[item.address] = {
-            symbol: item.symbol,
-            mintAddress: item.address,
-            logoUrl: item.logoURI,
-            verified: false,
-          };
-          return acc;
-        }, {});
-        setTokenMap(map);
-      } catch (error) {
-        console.error('Error fetching token map:', error);
-      }
-    };
-
-    fetchTokenMap();
-  }, []);
 
   useEffect(() => {
     const fetchTokens = async () => {
@@ -53,27 +34,32 @@ const Tokens: React.FC = () => {
             return null;
           }).filter(mintAddress => mintAddress !== null) as string[];
 
-          const accountInfos = await connection.getMultipleAccountsInfo(
-            mintAddresses.map(address => new PublicKey(address))
-          );
+          if (mintAddresses.length > 0) {
+            const response = await fetch('/api/tokens', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ mintAddresses }),
+            });
+            const tokenData: TokenData[] = await response.json();
 
-          const fetchedTokens = accountInfos.map((accountInfo, index) => {
-            if (accountInfo) {
-              const mintAddress = mintAddresses[index];
-              const tokenInfo = tokenMap[mintAddress];
-              const accountData = tokenAccounts[index].account.data;
+            const fetchedTokens = tokenAccounts.map((accountInfo, index) => {
+              const accountData = accountInfo.account.data;
               let tokenBalance = 0;
               if ('parsed' in accountData) {
                 tokenBalance = accountData.parsed.info.tokenAmount.uiAmount;
               }
+              const mintAddress = mintAddresses[index];
+              const tokenInfo = tokenData.find(token => token.address === mintAddress);
               if (tokenBalance > 0 && tokenInfo) {
                 return { balance: tokenBalance, info: tokenInfo };
               }
-            }
-            return null;
-          }).filter(token => token !== null) as { balance: number, info: TokenInfo }[];
+              return null;
+            }).filter(token => token !== null) as { balance: number, info: TokenData }[];
 
-          setTokens(fetchedTokens);
+            setTokens(fetchedTokens);
+          }
         } catch (error) {
           console.error('Error fetching tokens:', error);
         } finally {
@@ -85,7 +71,7 @@ const Tokens: React.FC = () => {
     };
 
     fetchTokens();
-  }, [publicKey, connection, tokenMap]);
+  }, [publicKey, connection]);
 
   return (
     <div className={styles.TokenList}>
@@ -96,9 +82,9 @@ const Tokens: React.FC = () => {
         <div className={styles.TokenGrid}>
           {tokens.map((token, index) => (
             <div key={index} className={styles.TokenListItem}>
-              {token.info.logoUrl ? (
+              {token.info.logoURI ? (
                 <img
-                  src={token.info.logoUrl}
+                  src={token.info.logoURI}
                   alt={token.info.symbol}
                   className={styles.TokenImage}
                   title={`${token.balance} ${token.info.symbol}`}
