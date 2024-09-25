@@ -3,15 +3,7 @@ import React from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
 import styles from '../styles/Game.module.css';
 import { Token } from '../pages/api/interface/game';
-
-interface DraggableSquareProps {
-  token: Token | null;
-  loading: boolean;
-  position: { x: number; y: number };
-  onStop: (data: DraggableData) => void;
-  connected: boolean;
-  nodeRef: React.RefObject<HTMLDivElement>;
-}
+import { DraggableSquareProps } from '../pages/api/interface/draggableSquareProps';
 
 const DraggableSquare: React.FC<DraggableSquareProps> = ({ token, loading, position, onStop, connected, nodeRef }) => {
   const handleChartButtonClick = () => {
