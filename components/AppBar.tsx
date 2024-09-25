@@ -34,7 +34,7 @@ export const AppBar: FC = () => {
                         className={`${styles.NavButton} ${router.pathname === '/profile' ? styles.active : ''}`}
                         onClick={() => navigateTo('/profile')}
                     >
-                        ⚙️ Profile
+                        👤 Profile
                     </button>
                     <button
                         className={styles.NavButton}
@@ -64,7 +64,7 @@ export const AppBar: FC = () => {
                     className={`${styles.NavButton} ${router.pathname === '/profile' ? styles.active : ''}`}
                     onClick={() => navigateTo('/profile')}
                 >
-                    ⚙️ Profile
+                    👤 Profile
                 </button>
                 <button
                     className={styles.NavButton}

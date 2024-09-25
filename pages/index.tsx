@@ -5,6 +5,7 @@ import homeStyles from '../styles/Home.module.css';
 import WalletContextProvider from '../components/WalletContextProvider';
 import { AppBar } from '../components/AppBar';
 import Game from '../components/Game';
+import StatusBar from '../components/StatusBar'; // Import StatusBar
 
 const Home: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
       </Head>
       <WalletContextProvider>
         <AppBar />
+        <StatusBar swipes={10} cooldown="5m" /> {/* Add StatusBar */}
         <main className={homeStyles.main}>
           <Game />
         </main>

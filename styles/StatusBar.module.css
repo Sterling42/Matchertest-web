@@ -1,0 +1,49 @@
+/* styles/StatusBar.module.css */
+.statusBar {
+    background-color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 30%; /* Reduce width to 30% */
+    border-radius: 20px; /* Make the borders round */
+    margin: 20px auto; /* Center the status bar and add some margin */
+    margin-top: 30px; /* Move the status bar further down from the app bar */
+  }
+  
+  .centerContent {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .centerContent span {
+    color: rgb(0, 0, 0);
+  }
+  
+  .button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 50%; /* Make the buttons round */
+  }
+  
+  .button:hover {
+    background-color: #111;
+  }
+  
+  /* Media query for mobile devices */
+  @media (max-width: 600px) {
+    .statusBar {
+      width: 90%; /* Use full width on mobile */
+    }
+  }
