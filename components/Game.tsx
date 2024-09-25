@@ -7,7 +7,7 @@ import useFetchToken from '../hooks/useFetchToken';
 import DraggableSquare from './DraggableSquare';
 
 const Game: React.FC = () => {
-  const { connected } = useWallet();
+  const { connected, publicKey } = useWallet();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const nodeRef = useRef(null);
   const { token, loading, fetchToken } = useFetchToken();
@@ -21,6 +21,24 @@ const Game: React.FC = () => {
         },
         body: JSON.stringify({ address: token.address, action, symbol: token.symbol, logoURI: token.logoURI }),
       });
+
+      // Update user stats
+      if (publicKey) {
+        await fetch('/api/updateUserStats', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            walletAddress: publicKey.toString(),
+            swipes: 1,
+            xp: 10,
+            rxp: 1,
+            tokenAddress: token.address,
+            action,
+          }),
+        });
+      }
     } catch (error) {
       console.error('Error tracking token:', error);
     }
