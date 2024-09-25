@@ -20,8 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       const client = await clientPromise;
-      const database = client.db('alltokens'); // Replace with your database name
-      const collection = database.collection('tokenlist'); // Replace with your collection name
+      const database = client.db('alltokens'); 
+      const collection = database.collection('tokenlist');
 
       const tokens = await collection.find(
         { address: { $in: mintAddresses } },
