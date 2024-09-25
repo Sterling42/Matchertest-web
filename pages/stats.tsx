@@ -6,8 +6,8 @@ import homeStyles from '../styles/Home.module.css';
 interface TokenStats {
   _id: string;
   address: string;
-  likes: number;
-  dislikes: number;
+  likes?: number;
+  dislikes?: number;
   logoURI: string;
   symbol: string;
 }
@@ -15,6 +15,8 @@ interface TokenStats {
 const Stats: React.FC = () => {
   const [tokenStats, setTokenStats] = useState<TokenStats[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showMoreLikes, setShowMoreLikes] = useState(false);
+  const [showMoreDislikes, setShowMoreDislikes] = useState(false);
 
   useEffect(() => {
     const fetchTokenStats = async () => {
@@ -32,32 +34,90 @@ const Stats: React.FC = () => {
     fetchTokenStats();
   }, []);
 
+  const sortedByLikes = [...tokenStats].sort((a, b) => {
+    const aLikes = a.likes || 0;
+    const aDislikes = Math.abs(a.dislikes || 0);
+    const bLikes = b.likes || 0;
+    const bDislikes = Math.abs(b.dislikes || 0);
+    return (bLikes / (bLikes + bDislikes || 1)) - (aLikes / (aLikes + aDislikes || 1));
+  });
+
+  const sortedByDislikes = [...tokenStats].sort((a, b) => {
+    const aLikes = a.likes || 0;
+    const aDislikes = Math.abs(a.dislikes || 0);
+    const bLikes = b.likes || 0;
+    const bDislikes = Math.abs(b.dislikes || 0);
+    return (bDislikes / (bLikes + bDislikes || 1)) - (aDislikes / (aLikes + aDislikes || 1));
+  });
+
+  const topLikes = showMoreLikes ? sortedByLikes.slice(0, 30) : sortedByLikes.slice(0, 10);
+  const topDislikes = showMoreDislikes ? sortedByDislikes.slice(0, 30) : sortedByDislikes.slice(0, 10);
+
   return (
     <div className={homeStyles.App}>
       <AppBar />
       <div className={styles.statsContainer}>
-        <h1>Token Statistics</h1>
+        <h1>Matcher Statistics Hub</h1>
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <div className={styles.tokenGrid}>
-            {tokenStats.map((token) => (
-              <div key={token._id} className={styles.tokenCard}>
-                <img src={token.logoURI} alt={token.symbol} className={styles.tokenImage} />
-                <p className={styles.tokenSymbol}>{token.symbol}</p>
-                <div className={styles.ratioBar}>
-                  <div
-                    className={styles.likesBar}
-                    style={{ width: `${(token.likes / (token.likes + token.dislikes || 1)) * 100}%` }}
-                  ></div>
-                  <div
-                    className={styles.dislikesBar}
-                    style={{ width: `${(token.dislikes / (token.likes + token.dislikes || 1)) * 100}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <>
+            <h2>Highest Like Ratio Tokens</h2>
+            <div className={styles.tokenGrid}>
+              {topLikes.map((token) => {
+                const likes = token.likes || 0;
+                const dislikes = Math.abs(token.dislikes || 0);
+                return (
+                  <div key={token._id} className={styles.tokenCard}>
+                    <img src={token.logoURI} alt={token.symbol} className={styles.tokenImage} />
+                    <p className={styles.tokenSymbol}>{token.symbol}</p>
+                    <div className={styles.ratioBar}>
+                      <div
+                        className={styles.likesBar}
+                        style={{ width: `${(likes / (likes + dislikes || 1)) * 100}%` }}
+                      ></div>
+                      <div
+                        className={styles.dislikesBar}
+                        style={{ width: `${(dislikes / (likes + dislikes || 1)) * 100}%` }}
+                      ></div>
+                    </div>
+                    <p>Total Votes: {likes + dislikes}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <button className={styles.loadMoreButton} onClick={() => setShowMoreLikes(!showMoreLikes)}>
+              {showMoreLikes ? 'Show Less' : 'Load More'}
+            </button>
+
+            <h2>Highest Dislike Ratio Tokens</h2>
+            <div className={styles.tokenGrid}>
+              {topDislikes.map((token) => {
+                const likes = token.likes || 0;
+                const dislikes = Math.abs(token.dislikes || 0);
+                return (
+                  <div key={token._id} className={styles.tokenCard}>
+                    <img src={token.logoURI} alt={token.symbol} className={styles.tokenImage} />
+                    <p className={styles.tokenSymbol}>{token.symbol}</p>
+                    <div className={styles.ratioBar}>
+                      <div
+                        className={styles.likesBar}
+                        style={{ width: `${(likes / (likes + dislikes || 1)) * 100}%` }}
+                      ></div>
+                      <div
+                        className={styles.dislikesBar}
+                        style={{ width: `${(dislikes / (likes + dislikes || 1)) * 100}%` }}
+                      ></div>
+                    </div>
+                    <p>Total Votes: {likes + dislikes}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <button className={styles.loadMoreButton} onClick={() => setShowMoreDislikes(!showMoreDislikes)}>
+              {showMoreDislikes ? 'Show Less' : 'Load More'}
+            </button>
+          </>
         )}
       </div>
     </div>

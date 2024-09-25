@@ -1,45 +1,61 @@
 .statsContainer {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .tokenGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
-  }
-  
-  .tokenCard {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .tokenImage {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .tokenSymbol {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .ratioBar {
-    display: flex;
-    height: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #f0f0f0;
-  }
-  
-  .likesBar {
-    background-color: #00ff08;
-  }
-  
-  .dislikesBar {
-    background-color: #ff1100;
-  }
+  padding: 20px;
+  text-align: center;
+}
+
+.tokenGrid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.tokenCard {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+
+.tokenImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.tokenSymbol {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ratioBar {
+  display: flex;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.likesBar {
+  background-color: #00ff08;
+}
+
+.dislikesBar {
+  background-color: #ff1100;
+}
+
+.loadMoreButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.loadMoreButton:hover {
+  background-color: #0056b3;
+}
