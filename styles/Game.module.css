@@ -54,8 +54,8 @@
 }
 
 .tokenImage {
-    width: 350px;
-    height: 350px;
+    width: 300px; /* Smaller width */
+    height: 300px; /* Smaller height */
     object-fit: cover;
     border-radius: 50%; /* Make the image round */
     border: 7px solid #000; /* Add border to the image */
@@ -65,13 +65,13 @@
 }
 
 .tokenName, .tokenSymbol, .tokenTags {
-    font-size: 1.5em; /* Adjust font size */
+    font-size: 1.2em; /* Smaller font size */
     font-weight: bold; /* Make text bold */
     margin: 5px 0; /* Reduce margin for closer spacing */
 }
 
 .tokenDescription {
-    font-size: 1.2em; /* Adjust font size */
+    font-size: 1em; /* Smaller font size */
     color: #555; /* Slightly lighter color for description */
     margin: 5px 0; /* Reduce margin for closer spacing */
 }
@@ -130,21 +130,21 @@
     }
 
     .tokenImage {
-        width: 150px;
-        height: 150px;
+        width: 120px; /* Smaller width on mobile */
+        height: 120px; /* Smaller height on mobile */
         border: 5px solid #000;
     }
 
     .tokenName, .tokenSymbol, .tokenTags {
-        font-size: 1.2em; /* Smaller font size on mobile */
-    }
-
-    .tokenDescription {
         font-size: 1em; /* Smaller font size on mobile */
     }
 
-    .chartButton {
+    .tokenDescription {
         font-size: 0.8em; /* Smaller font size on mobile */
+    }
+
+    .chartButton {
+        font-size: 0.6em; /* Smaller font size on mobile */
         padding: 5px 10px; /* Adjust padding for mobile */
     }
 }
