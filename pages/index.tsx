@@ -32,8 +32,8 @@ const Home: React.FC = () => {
   useEffect(() => {
     const calculateCooldown = () => {
       const now = new Date();
-      const nextHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 0, 0, 0);
-      const diff = nextHour.getTime() - now.getTime();
+      const nextTrigger = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, 59, 0, 0);
+      const diff = nextTrigger.getTime() - now.getTime();
 
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
