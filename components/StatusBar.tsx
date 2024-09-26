@@ -1,6 +1,7 @@
 // components/StatusBar.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import statusBarStyles from '../styles/StatusBar.module.css';
+import SettingsModal from './SettingsModal';
 
 interface StatusBarProps {
   swipes: number;
@@ -8,6 +9,16 @@ interface StatusBarProps {
 }
 
 const StatusBar: React.FC<StatusBarProps> = ({ swipes, cooldown }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSettingsClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <nav className={statusBarStyles.statusBar}>
       <div className={statusBarStyles.centerContent}>
@@ -15,8 +26,9 @@ const StatusBar: React.FC<StatusBarProps> = ({ swipes, cooldown }) => {
           <span>Swipes: {swipes} {cooldown}</span>
         </div>
         <button className={statusBarStyles.button}>📥Matches</button>
-        <button className={statusBarStyles.button}>⚙️Settings</button>
+        <button className={statusBarStyles.button} onClick={handleSettingsClick}>⚙️Settings</button>
       </div>
+      <SettingsModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </nav>
   );
 };
