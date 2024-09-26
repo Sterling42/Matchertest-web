@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import Draggable, { DraggableData } from 'react-draggable';
 import styles from '../styles/Game.module.css';
-import { Token } from '../pages/api/interface/game'; // Adjust the path if necessary
+import { Token } from '../pages/api/interface/game';
 import { useWallet } from '@solana/wallet-adapter-react';
 import useFetchToken from '../hooks/useFetchToken';
 import DraggableSquare from './DraggableSquare';
@@ -16,7 +16,7 @@ const Game: React.FC<GameProps> = ({ onSwipe, swipes }) => {
   const { connected, publicKey } = useWallet();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const nodeRef = useRef(null);
-  const { token, loading, fetchToken } = useFetchToken();
+  const { token, loading, resetToken } = useFetchToken();
 
   const trackToken = async (token: Token, action: 'like' | 'dislike') => {
     try {
@@ -67,11 +67,11 @@ const Game: React.FC<GameProps> = ({ onSwipe, swipes }) => {
       if (square.right < left) {
         console.log('Disliked');
         if (token) trackToken(token, 'dislike');
-        fetchToken();
+        resetToken();
       } else if (square.left > right) {
         console.log('Liked');
         if (token) trackToken(token, 'like');
-        fetchToken();
+        resetToken();
       }
 
       setPosition({ x: 0, y: 0 });

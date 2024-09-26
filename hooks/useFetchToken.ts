@@ -11,12 +11,14 @@ const useFetchToken = () => {
     try {
       const response = await fetch('/api/randomToken');
       const data = await response.json();
-      setToken({
+      const newToken = {
         name: data.name,
         symbol: data.symbol,
         logoURI: data.logoURI,
         address: data.address,
-      });
+      };
+      setToken(newToken);
+      localStorage.setItem('currentToken', JSON.stringify(newToken));
     } catch (error) {
       console.error('Error fetching token:', error);
     } finally {
@@ -25,10 +27,20 @@ const useFetchToken = () => {
   };
 
   useEffect(() => {
-    fetchToken();
+    const storedToken = localStorage.getItem('currentToken');
+    if (storedToken) {
+      setToken(JSON.parse(storedToken));
+      setLoading(false);
+    } else {
+      fetchToken();
+    }
   }, []);
 
-  return { token, loading, fetchToken };
+  const resetToken = () => {
+    fetchToken();
+  };
+
+  return { token, loading, resetToken };
 };
 
 export default useFetchToken;
