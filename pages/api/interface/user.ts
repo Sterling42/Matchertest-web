@@ -6,7 +6,6 @@ export interface User {
   swipes: number;
   totalSwipes: number;
   profile: {
-    username: any;
     xp: number;
     rxp: number;
     achievements: { [key: string]: boolean };
