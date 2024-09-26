@@ -32,7 +32,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         swipes: user.swipes,
         xp: user.profile.xp,
         rxp: user.profile.rxp,
-        cooldown: '5m', // Assuming cooldown is '5m'
       });
     } catch (error) {
       console.error('Error fetching user data:', error);

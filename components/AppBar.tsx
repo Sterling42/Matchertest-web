@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styles from '../styles/AppHeader.module.css';
+import styles from '../styles/AppBar.module.css';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
