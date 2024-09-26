@@ -7,7 +7,7 @@
   align-items: center;
   padding: 10px;
   width: 30%; /* Reduce width to 30% */
-  border-radius: 20px; /* Make the borders round */
+  border-radius: 10px; /* Make the borders round */
   margin: 20px auto; /* Center the status bar and add some margin */
   margin-top: 30px; /* Move the status bar further down from the app bar */
   font-size: 25px;
