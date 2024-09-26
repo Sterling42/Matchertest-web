@@ -11,7 +11,7 @@
   margin: 20px auto; /* Center the status bar and add some margin */
   margin-top: 30px; /* Move the status bar further down from the app bar */
   font-size: 25px;
-  min-width: 300px;
+  min-width: 475px;
   min-height: 50px; /* Set a minimum width */
 }
 
